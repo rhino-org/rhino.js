@@ -1,0 +1,22 @@
+{
+    "name": "rhinojs",
+    "version": "1.0.0",
+    "description": "rhinoJS Helpers",
+    "keywords": [
+        "rhino",
+        "js"
+    ],
+    "contributors": [
+        "Bruno Gonçalves",
+        "Tiago Gonçalves"
+    ],
+    "license": "MIT",
+    "main": "./index.js",
+    "dependencies": {
+        "randomstring": "^1.1.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:rhino-org/rhino.js.git"
+    }     
+}
