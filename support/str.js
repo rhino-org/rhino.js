@@ -38,13 +38,22 @@ Str.randomStr = (len = 16) => {
 /**
  * Troca todas as ocorrencias da string.
  *
- * @param search
- * @param replacement
- * @param value
+ * @param {Array|string} search
+ * @param {string} replacement
+ * @param {string} value
  * @returns {string}
  */
 Str.replaceAll = (search, replacement, value) => {
-    return value.replace(new RegExp(search, 'g'), replacement);
+    // Se não for um array, deve tranformar em array para tratar varias opcoes de busca.
+    if (!((typeof search == 'object') && (search.constructor.name == 'Array'))) {
+        search = [search];
+    }
+
+    for (var i = 0; i < search.length; i++) {
+        value = value.replace(new RegExp(search[i], 'g'), replacement);
+    }
+
+    return value;
 }
 
 /**
