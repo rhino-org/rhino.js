@@ -3,6 +3,14 @@ const df = require('date-format');
 class Carbon
 {
     /**
+     * Format padrao.
+     * @returns {string}
+     */
+    static get FORMAT_DEFAULT() {
+        return 'yyyy-MM-dd hh:mm:ss';
+    }
+
+    /**
      * Retorna a data e hora atual.
      * @returns {Date}
      */
@@ -17,6 +25,7 @@ class Carbon
      * @returns {Date}
      */
     static createFromFormat(value, format) {
+        format = ((format == undefined) || (format == '')) ? this.FORMAT_DEFAULT : format;
         return df.parse(format, value);
     }
 
@@ -26,6 +35,7 @@ class Carbon
      * @param {String} format Formato a converter em string
      */
     static format(dt, format) {
+        format = ((format == undefined) || (format == '')) ? this.FORMAT_DEFAULT : format;
         return df.asString(format, dt);
     }
 }
