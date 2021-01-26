@@ -8,9 +8,7 @@ phases:
     commands:
       - npm install
 
-
   build:
     commands:
       - npm publish
       - echo Finalizou OK
-      
