@@ -89,6 +89,17 @@ Str.studly = (value) => {
 };
 
 /**
+ * Remover acentos e sedilha.
+ * @param {String} value String a ser tratada
+ * @returns {String}
+ */
+Str.ascii = (value) => {
+    value = String(value);
+
+    return value.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+};
+
+/**
  * Exports.
  */
 module.exports = Str;
