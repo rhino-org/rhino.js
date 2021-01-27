@@ -1,4 +1,5 @@
-var randomStr = require("randomstring");
+const randomStr = require("randomstring");
+const slug = require("slug");
 
 /**
  * Objeto Str.
@@ -86,6 +87,16 @@ Str.studly = (value) => {
     value = Str.ucFirst(value);
 
     return Str.replaceAll(' ', '', value).trim();
+};
+
+/**
+ * Converte um valor para slug.
+ * 
+ * @param {String} value
+ * @returns {String}
+ */
+Str.slug = (value, separador = '_') => {
+    return slug(value, separador);
 };
 
 /**
