@@ -1,3 +1,4 @@
+# 1.3.0
 version: 0.2
 
 phases:
@@ -12,4 +13,3 @@ phases:
     commands:
       - npm publish
       - echo Finalizou OK
-      

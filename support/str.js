@@ -27,6 +27,24 @@ Str.is = (pattern, value) => {
 }
 
 /**
+ * Verificar se string é nula ou vazia.
+ *
+ * @param value String que sera verificada
+ * @returns {boolean}
+ */
+Str.isNull = (value) => {
+    if (value == undefined) {
+        return true;
+    }
+
+    if (value == null) {
+        return true;
+    }
+
+    return (String(value).trim() == '');
+}
+
+/**
  * Gerar string aleatória com um tamanho especifico.
  * 
  * @param len Tamanho da string que precisa ser gerada
