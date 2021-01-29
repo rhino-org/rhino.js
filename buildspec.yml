@@ -13,4 +13,3 @@ phases:
     commands:
       - npm publish
       - echo Finalizou OK
-
