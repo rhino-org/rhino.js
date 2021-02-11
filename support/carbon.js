@@ -35,7 +35,13 @@ class Carbon
      * @param {String} format Formato a converter em string
      */
     static format(dt, format) {
+        // Veriifcar se o dt foi informado como numerico
+        dt = (typeof dt == 'number') ? new Date(dt) : dt;
+
+        // Tratar formatação
         format = ((format == undefined) || (format == '')) ? this.FORMAT_DEFAULT : format;
+
+        // Converter
         return df.asString(format, dt);
     }
 }
