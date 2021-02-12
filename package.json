@@ -1,6 +1,6 @@
 {
     "name": "rhinojs",
-    "version": "1.5.1",
+    "version": "1.6.0",
     "description": "rhinoJS Helpers",
     "keywords": [
         "rhino",
@@ -15,7 +15,8 @@
     "dependencies": {
         "randomstring": "^1.1.5",
         "date-format": "^3.0.0",
-        "slug": "^4.0.2"
+        "slug": "^4.0.2",
+        "vue-cookie": "^1.1.4"
     },
     "repository": {
         "type": "git",
