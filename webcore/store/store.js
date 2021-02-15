@@ -50,20 +50,21 @@ class StoreProvider
      * 
      */
     set(key, value, opts = null) {
-
+        
         // Passar valor pelo cripto
         value = this.$crypto.encrypt(value);
-
+        
         this.$provider.set(key, value, opts);
     };
-
+    
     /**
      * Remover valor no store.
      * 
      * @param {string} key Nome da chave
+     * @param {mixed} opts Options do remove
      */
-    remove(key) {
-        this.$provider.remove(key);
+    remove(key, opts = null) {
+        this.$provider.remove(key, opts);
     };
 };
 
