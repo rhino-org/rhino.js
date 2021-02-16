@@ -1,7 +1,13 @@
 /**
  * Controle de rotas NAO autenticadas.
  */
-module.exports = (router, routeGuest) => {
+module.exports = (router, opts = {}) => {
+
+    // Tratar parametros
+    var optsDefault = {
+        routeGuest: 'home'
+    };
+    opts = Object.assign(optsDefault, opts);
 
     // Verificar se foi definido o controle de auth pelo options do router
     const auth = router.options.auth ? router.options.auth : null;
@@ -20,10 +26,10 @@ module.exports = (router, routeGuest) => {
         }
 
         var route = {};
-        if (typeof routeGuest == 'function') {
-            route = routeGuest();
+        if (typeof opts.routeGuest == 'function') {
+            route = opts.routeGuest();
         } else {
-            route = { name: routeGuest };
+            route = { name: opts.routeGuest };
         }
 
         return router.push(route);
