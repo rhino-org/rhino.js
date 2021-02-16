@@ -1,7 +1,14 @@
 /**
  * Controle de rotas autenticadas.
  */
-module.exports = (router, routeLogin, loginName = 'login') => {
+module.exports = (router, storage, url, opts = {}) => {
+
+    // Tratar parametros
+    var optsDefault = {
+        loginName  : 'login',
+        routeLogin : 'login',
+    };
+    opts = Object.assign(optsDefault, opts);
 
     // Verificar se foi definido o controle de auth pelo options do router
     const auth = router.options.auth ? router.options.auth : null;
@@ -17,24 +24,18 @@ module.exports = (router, routeLogin, loginName = 'login') => {
         // Verificar se contexto esta autenticado
         if ((!auth) || (!(await auth.check()))) {
 
-            // Guardar o nome da rota TO
-            var path_continue = null;
-            if ((to.name != loginName)) {
-                path_continue = to.name;
+            // Guardar a rota TO para continuar depois do login
+            if ((to.name != opts.loginName)) {
+                var url_continue = url.route(to).fullPath();
+                storage.session.set('auth_continue', url_continue);
             }
 
             // Redirecionar para o login
             var route = {};
-            if (typeof routeLogin == 'function') {
-                route = routeLogin();
+            if (typeof opts.routeLogin == 'function') {
+                route = opts.routeLogin();
             } else {
-                route = { name: loginName };
-            }
-
-            if (path_continue) {
-                route.query = {
-                    continue: path_continue
-                };
+                route = { name: opts.loginName };
             }
 
             return router.push(route);
