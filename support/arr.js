@@ -87,6 +87,56 @@ Arr.each = (obj, cb) => {
 };
 
 /**
+ * Retorn um array/object somente com os keys informados.
+ * 
+ * @param {object} obj Objeto origem
+ * @param {array} keys Lista de keys
+ * @returns {object} Objeto contendo somente os keys informados
+ */
+Arr.only = (obj, keys) => {
+    if (obj == null) {
+        return null;
+    }
+
+    var ret = {};
+
+    var listaKeys = Object.keys(obj);
+    for (var i = 0; i < listaKeys.length; i++) {
+        var okey = listaKeys[i];
+        if (keys.indexOf(okey) >= 0 ) {
+            ret[okey] = obj[okey];
+        }
+    }
+
+    return ret;
+};
+
+/**
+ * Retorn um array/object sem os keys informados.
+ * 
+ * @param {object} obj Objeto origem
+ * @param {array} keys Lista de keys
+ * @returns {object} Objeto sem os keys informados
+ */
+Arr.except = (obj, keys) => {
+    if (obj == null) {
+        return null;
+    }
+
+    var ret = {};
+
+    var listaKeys = Object.keys(obj);
+    for (var i = 0; i < listaKeys.length; i++) {
+        var okey = listaKeys[i];
+        if (keys.indexOf(okey) < 0 ) {
+            ret[okey] = obj[okey];
+        }
+    }
+
+    return ret;
+};
+
+/**
  * Exports.
  */
 module.exports = Arr;
