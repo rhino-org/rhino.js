@@ -1,3 +1,5 @@
+const Str = require('./str');
+
 class Num {
     /**
      * Gerar numero randomico.
@@ -64,6 +66,34 @@ class Num {
      */
     static percent(percentage, value, dec = 2) {
         return this.round((value * percentage) / 100, dec);
+    }
+
+    /**
+     * Retorna o valor formatado em string.
+     *
+     * @param value
+     * @param dec
+     * @param opts
+     * @return String
+     */
+     static format(value, dec = 2, opts = {}) {
+         if (!(typeof x == 'number')) {
+             return '';
+         }
+
+         // Assumir options
+         var opts = Object.assign({ thousand: '.', dec: ','}, opts);
+
+         var str = value.toFixed(dec);
+
+         // Gerar separador milhar
+         str = str.replace(/\B(?=(\d{3})+(?!\d))/g, "#");
+
+         // Tratar traduções
+         str = Str.replaceAll('\\.', opts.dec, str);
+         str = Str.replaceAll('#', opts.thousand, str);
+
+         return str;
     }
 }
 
