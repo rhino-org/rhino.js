@@ -77,7 +77,7 @@ class Num {
      * @return String
      */
      static format(value, dec = 2, opts = {}) {
-         if (!(typeof x == 'number')) {
+         if (!((typeof value == 'number') || ((typeof value == 'object') && (value.constructor.name == 'Number')))) {
              return '';
          }
 
