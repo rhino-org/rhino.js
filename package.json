@@ -1,6 +1,6 @@
 {
     "name": "rhinojs",
-    "version": "1.8.1",
+    "version": "1.8.2",
     "description": "rhinoJS Helpers",
     "keywords": [
         "rhino",
@@ -14,7 +14,7 @@
     "main": "./index.js",
     "dependencies": {
         "randomstring": "^1.1.5",
-        "date-format": "^3.0.0",
+        "date-and-time": "^1.0.1",
         "slug": "^4.0.2",
         "vue-cookie": "^1.1.4"
     },
