@@ -1,3 +1,5 @@
+const arr = require('../../support/arr');
+
 class RouteMaker
 {
     constructor(path, name, title = '')
@@ -8,10 +10,9 @@ class RouteMaker
 
         // Opcionais
         this.$component        = null;
-        this.$auth             = false;
-        this.$guest            = false;
         this.$toUrl            = null;
         this.$toUrlIncludePath = false;
+        this.$metas            = {};
     }
 
     /**
@@ -27,13 +28,26 @@ class RouteMaker
     }
 
     /**
+     * Atribuir uma meta custom na rota.
+     * 
+     * @param {String} key ID do meta
+     * @param {Any} value Valor do meya
+     * @returns {RouteMaker}
+     */
+     meta(key, value) {
+        this.$metas[key] = value;
+
+        return this;
+    }
+
+    /**
      * Atribuir se rota auth ou não.
      * 
      * @param {Boolean} value Se auth ou não
      * @returns {RouteMaker}
      */
     auth(value = true) {
-        this.$auth = value;
+        this.meta('auth', value);
 
         return this;
     }
@@ -45,7 +59,7 @@ class RouteMaker
      * @returns {RouteMaker}
      */
     guest(value = true) {
-        this.$guest = value;
+        this.meta('guest', value);
 
         return this;
     }
@@ -110,10 +124,17 @@ class RouteMaker
         route.name = this.$name;
 
         // Via meta
-        route.meta = {};
+        route.meta       = this.$metas
         route.meta.title = this.$title;
-        route.meta.auth  = this.$auth;
-        route.meta.guest = this.$guest;
+
+        // Adicionar as funcs 
+        route.meta.get = function(key, def = null) {
+            return arr.get(route.meta, key, def);
+        }
+
+        route.meta.exists = function(key) {
+            return arr.exists(route.meta, key);
+        }
 
         // Render Component
         if (this.$component) {
