@@ -34,7 +34,7 @@ class RouteMaker
      * @param {Any} value Valor do meya
      * @returns {RouteMaker}
      */
-     meta(key, value) {
+     meta(key, value = true) {
         this.$metas[key] = value;
 
         return this;
