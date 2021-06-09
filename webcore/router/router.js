@@ -15,6 +15,21 @@ class RouterMake
     }
 
     /**
+     * Uma redirect.
+     * 
+     * @param {String} path Path da rola
+     * @param {String} redirect Nome da rota
+     * @returns {RouteMaker}
+     */
+    redirect(path, redirect) {
+        var route = new RouteMaker(path, name, '');
+
+        route.$redirect = redirect;
+
+        return route;
+    }
+
+    /**
      * Alias toUrl.
      * 
      * @param {String} path Path da rola

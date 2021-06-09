@@ -10,6 +10,8 @@ class RouteMaker
 
         // Opcionais
         this.$component        = null;
+        this.$redirect         = null;
+        this.$alias            = null;
         this.$toUrl            = null;
         this.$toUrlIncludePath = false;
         this.$metas            = {};
@@ -23,6 +25,18 @@ class RouteMaker
      */
     title(value) {
         this.$title = value;
+
+        return this;
+    }
+
+    /**
+     * Atribuir alias.
+     * 
+     * @param {String} value Alias
+     * @returns {RouteMaker}
+     */
+    alias(value) {
+        this.$alias = value;
 
         return this;
     }
@@ -122,6 +136,16 @@ class RouteMaker
         var route = {};
         route.path = this.$path;
         route.name = this.$name;
+
+        // Redirect
+        if (this.$redirect != null) {
+            route.redirect = this.$redirect;
+        }
+
+        // Alias
+        if (this.$alias != null) {
+            route.alias = this.$alias;
+        }
 
         // Via meta
         route.meta       = this.$metas
