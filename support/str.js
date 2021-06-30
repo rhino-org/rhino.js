@@ -47,11 +47,17 @@ Str.isNull = (value) => {
 /**
  * Gerar string aleatória com um tamanho especifico.
  * 
- * @param len Tamanho da string que precisa ser gerada
+ * @param {Number} length Tamanho da string que precisa ser gerada
+ * @param {String} charset Opções de geração: alphanumeric, alphabetic, numeric 
+ * @param {null|String} capitalization Forma do resultado: null, lowercase, uppercase
  * @returns {string} Retorna uma string aleatória no tamanho especificado
  */
-Str.randomStr = (len = 16) => {
-    return randomStr.generate(len);    
+Str.randomStr = (length = 16, charset = 'alphanumeric', capitalization = null) => {
+    return randomStr.generate({
+        length,
+        charset,
+        capitalization,
+    });    
 };
 
 /**
