@@ -1,6 +1,6 @@
 {
     "name": "rhinojs",
-    "version": "1.8.10",
+    "version": "1.8.11",
     "description": "rhinoJS Helpers",
     "keywords": [
         "rhino",
@@ -21,5 +21,5 @@
     "repository": {
         "type": "git",
         "url": "git@github.com:rhino-org/rhino.js.git"
-    }     
+    }
 }
