@@ -1,5 +1,8 @@
-//const df = require('date-format');
-const _dt = require('date-and-time');
+// Verificar biblioteca
+var _dt = require('date-and-time');
+if (!(typeof _dt.parse == 'function')) {
+    _dt = _dt.default;
+}
 
 class Carbon
 {
