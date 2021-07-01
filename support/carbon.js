@@ -49,6 +49,19 @@ class Carbon
     }
 
     /**
+     * Verificar se data em string é uma data valida pelo um formato específico.
+     * 
+     * @param {String} value Data e/ou hora em string a ser convertida
+     * @param {String} format Formato da data e hora 
+     * @returns {Boolean}
+     */
+    static isValid(value, format) {
+        format = ((format == undefined) || (format == '')) ? this.FORMAT_DEFAULT : format;
+
+        return _dt.isValid(value, format);
+    }
+
+    /**
      * Converter um data e hora em string em um formato especifico.
      * @param {Date} dt Data e hora
      * @param {String} format Formato a converter em string
