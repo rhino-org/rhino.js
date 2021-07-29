@@ -2,8 +2,10 @@
  * Exports root.
  */
 module.exports = {
-    Arr: require('./arr'),
-    Num: require('./num'),
-    Str: require('./str'),
-    Obj: require('./obj')
+    Arr    : require('./arr'),
+    Carbon : require('./carbon'),
+    Num    : require('./num'),
+    Str    : require('./str'),
+    Obj    : require('./obj'),
+    Thread : require('./thread')
 };
